@@ -17,7 +17,7 @@
         <div class="my-2">
             <label for="name">Name:</label>
               <input type="text"  id="name" class="form-control w-100" placeholder="Name" name="name" oninput="validName()" required>
-              <div class="valid-feedback">Valid.</div>
+              <div id="feedback">Valid.</div>
               <div class="invalid-feedback">Please fill out this field.</div>
         </div>
 
@@ -77,8 +77,9 @@
      <script>
         function validName(){
               let name=document.getElementById('name').value;
-              if ((name.length==0) || (name.includes('1','2','3','4','5','7','8','9','*','-','_','+','=','!','£','#','@','$','%','^','&')==true)){
-                document.getElementById('feedback').innerHTML="Invalid Input"
+            //   if ((name.length==0) || (name.includes('1','2','3','4','5','7','8','9','*','-','_','+','=','!','£','#','@','$','%','^','&')==true)){
+                if ('/^[A-za-z\s]+$/'.test(name)=true){
+                document.getElementById('feedback').innerHTML="KKKK"
               }
               else{
                 document.getElementById('feedback').innerHTML="Valid Input"
