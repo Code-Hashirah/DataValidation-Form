@@ -4,9 +4,95 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <link rel="stylesheet" href="bootstrap/bootstrap.min.css">
+    <link rel="stylesheet" href="style.css">
+    <title>Form Validation</title>
 </head>
 <body>
-    
+   
+    <div id="form">
+        
+    <form action="get" class="was-validated" id="form-validation">
+        <h1>Form Validation</h1>
+        <div class="my-2">
+            <label for="name">Name:</label>
+              <input type="text"  id="name" class="form-control w-100" placeholder="Name" name="name" oninput="validName()" required>
+              <div class="valid-feedback">Valid.</div>
+              <div class="invalid-feedback">Please fill out this field.</div>
+        </div>
+
+        <div class="my-2">
+            <label for="phoneNo">Phone Number</label>
+              <input type="text"  id="phoneNo" class="form-control w-100" placeholder="Phone Number" name="phoneNo" required>
+              <div class="valid-feedback">Valid.</div>
+              <div class="invalid-feedback">Please fill out this field.</div>
+        </div>
+
+        <div class="my-2">
+            <label for="E-mail">E-mail:</label>
+              <input type="text"  id="E-mail" class="form-control w-100" placeholder="E-mail" name="E-mail" required>
+              <div class="valid-feedback">Valid.</div>
+              <div class="invalid-feedback">Please fill out this field.</div>
+        </div>
+
+        <div class="my-2">
+            <label for="gender">Gender</label>
+            <input class="form-control w-100" list="genders" name="genders" id="gender" placeholder="Choose Gender" required>
+            <datalist id="genders">
+            <option value="Male">
+            <option value="Female">
+            <option value="Rathe not say">
+            </datalist>
+        </div>
+
+        <div class="mb-2 mt-2">
+          <label for="address" class="form-label">Address</label>
+          <input type="text" class="form-control w-100" id="address" placeholder="Address" name="address" required>
+          <div class="valid-feedback">Valid.</div>
+          <div class="invalid-feedback" id="feedback">Please fill out this field.</div>
+        </div>
+        <div class="mb-3">
+          <label for="pwd" class="form-label">Password:</label>
+          <input type="password" class="form-control w-100" id="password" placeholder="Enter password" name="password" required>
+          <div class="valid-feedback">Valid.</div>
+          <div class="invalid-feedback">Please fill out this field.</div>
+        </div>
+        <div class="mb-3">
+            <label for="pwd" class="form-label">Confirm Password:</label>
+            <input type="password" class="form-control w-100" id="ConfirmPassword" placeholder="Confirm password" name="Confirmpassword" required>
+            <!-- <div class="valid-feedback">Valid.</div> -->
+            <!-- <div class="invalid-feedback">Please fill out this field.</div> -->
+          </div>
+        <div class="form-check mb-3">
+          <input class="form-check-input " type="checkbox" id="myCheck" name="remember" required>
+          <label class="form-check-label" for="myCheck">I agree on the terms and condition.</label>
+          <!-- <div class="valid-feedback">Valid.</div>
+          <div class="invalid-feedback">Check this checkbox to continue.</div> -->
+        </div>
+        <button type="submit" class="btn btn-primary">Submit</button>
+      </form>
+    </div>
+     <!-- jS Section below -->
+     <script src="bootstrap/bootstrap.bundle.min.js"></script>
+     <script>
+        function validName(){
+              let name=document.getElementById('name').value;
+              if ((name.length==0) || (name.includes('1','2','3','4','5','7','8','9','*','-','_','+','=','!','£','#','@','$','%','^','&')==true)){
+                document.getElementById('feedback').innerHTML="Invalid Input"
+              }
+              else{
+                document.getElementById('feedback').innerHTML="Valid Input"
+              }
+        }
+      
+        let phone =document.getElementById('phoneNo').value;
+        let email =document.getElementById('E-mail').value;
+        let gender =document.getElementById('gender').value;
+        let address =document.getElementById('address').value;
+        let password =document.getElementById('password').value;
+        let ConfirmPassword =document.getElementById('ConfirmPassword').value;
+
+
+     </script>
 </body>
 </html>
