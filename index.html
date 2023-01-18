@@ -12,13 +12,13 @@
    
     <div id="form">
         
-    <form action="get" class="was-validated" id="form-validation">
+    <form action="get"  id="form-validation" name="form">
         <h1>Form Validation</h1>
         <div class="my-2">
             <label for="name">Name:</label>
-              <input type="text"  id="name" class="form-control w-100" placeholder="Name" name="name" oninput="validName()" required>
-              <div id="feedback">Valid.</div>
-              <div class="invalid-feedback">Please fill out this field.</div>
+              <input type="text"  id="name" class="form-control w-100" placeholder="Name" name="name" onmouseleave ="validName()">
+              <div id="feedback"></div>
+              <div id="invalid-feedback"></div>
         </div>
 
         <div class="my-2">
@@ -73,17 +73,22 @@
       </form>
     </div>
      <!-- jS Section below -->
-     <script src="bootstrap/bootstrap.bundle.min.js"></script>
+     <!-- <script src="bootstrap/bootstrap.bundle.min.js"></script> -->
      <script>
         function validName(){
+          let nums=['0','1','2','3','4','5','6','7','8','9','*','_','+','=','-','!','£','$','%','^','&']
               let name=document.getElementById('name').value;
-            //   if ((name.length==0) || (name.includes('1','2','3','4','5','7','8','9','*','-','_','+','=','!','£','#','@','$','%','^','&')==true)){
-                if ('/^[A-za-z\s]+$/'.test(name)=true){
-                document.getElementById('feedback').innerHTML="KKKK"
+             if(name.lenght!=0){
+              if(nums.includes(name)==true){
+                document.getElementById('invalid-feedback').innerHTML="Invalid input"
+                document.getElementById('feedback').innerHTML=" "
               }
-              else{
-                document.getElementById('feedback').innerHTML="Valid Input"
+              else if(name.lenght!=0 || nums.includes(name)==false){
+                document.getElementById('feedback').innerHTML="valid input"
+                document.getElementById('invalid-feedback').innerHTML=" "
               }
+             }
+
         }
       
         let phone =document.getElementById('phoneNo').value;
@@ -96,4 +101,5 @@
 
      </script>
 </body>
-</html>
+<!-- // if ('/^[A-za-z\s]+$/'.test(name)=true){ -->
+<!-- </html>(name.includes('1','2','3','4','5','7','8','9','*','-','_','+','=','!','£','#','@','$','%','^','&')==true) -->
