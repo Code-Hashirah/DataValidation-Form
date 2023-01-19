@@ -16,23 +16,17 @@
         <h1>Form Validation</h1>
         <div class="my-2">
             <label for="name">Name:</label>
-              <input type="text"  id="name" class="form-control w-100" placeholder="Name" name="name" onmouseleave ="validName()">
-              <div id="feedback"></div>
-              <div id="invalid-feedback"></div>
-        </div>
+              <input type="text"  id="name" class="form-control w-100" placeholder="Name" name="name" oninput="validName()" required>
+          </div>
 
         <div class="my-2">
             <label for="phoneNo">Phone Number</label>
-              <input type="text"  id="phoneNo" class="form-control w-100" placeholder="Phone Number" name="phoneNo" required>
-              <div class="valid-feedback">Valid.</div>
-              <div class="invalid-feedback">Please fill out this field.</div>
+              <input type="text"  id="phoneNo" class="form-control w-100" placeholder="Phone Number" name="phoneNo" oninput="validPhone()" required>
         </div>
 
         <div class="my-2">
             <label for="E-mail">E-mail:</label>
               <input type="text"  id="E-mail" class="form-control w-100" placeholder="E-mail" name="E-mail" required>
-              <div class="valid-feedback">Valid.</div>
-              <div class="invalid-feedback">Please fill out this field.</div>
         </div>
 
         <div class="my-2">
@@ -48,15 +42,13 @@
         <div class="mb-2 mt-2">
           <label for="address" class="form-label">Address</label>
           <input type="text" class="form-control w-100" id="address" placeholder="Address" name="address" required>
-          <div class="valid-feedback">Valid.</div>
-          <div class="invalid-feedback" id="feedback">Please fill out this field.</div>
         </div>
+
         <div class="mb-3">
           <label for="pwd" class="form-label">Password:</label>
           <input type="password" class="form-control w-100" id="password" placeholder="Enter password" name="password" required>
-          <div class="valid-feedback">Valid.</div>
-          <div class="invalid-feedback">Please fill out this field.</div>
         </div>
+
         <div class="mb-3">
             <label for="pwd" class="form-label">Confirm Password:</label>
             <input type="password" class="form-control w-100" id="ConfirmPassword" placeholder="Confirm password" name="Confirmpassword" required>
@@ -78,20 +70,36 @@
         function validName(){
           let nums=['0','1','2','3','4','5','6','7','8','9','*','_','+','=','-','!','£','$','%','^','&']
               let name=document.getElementById('name').value;
-             if(name.lenght!=0){
-              if(nums.includes(name)==true){
-                document.getElementById('invalid-feedback').innerHTML="Invalid input"
-                document.getElementById('feedback').innerHTML=" "
+             if(name.lenght!=0) {
+                 console.log("Validated")
+              if((nums.includes(name)==true)){
+                console.log("Invalid input")
+                // document.getElementById('valid-feedback').innerText=" ";
               }
-              else if(name.lenght!=0 || nums.includes(name)==false){
-                document.getElementById('feedback').innerHTML="valid input"
-                document.getElementById('invalid-feedback').innerHTML=" "
+              
               }
+              else if((name.lenght!=0)&&(nums.includes(name)==false)){
+                console.log("Validated!");
+              } 
+            //  else if(name.lenght==0){
+          
+            //  }
+             else{
+              document.getElementById('name').style.accentColor;
+                console.log("Empty! Not allowed")
              }
 
         }
-      
+      function validPhone(){
         let phone =document.getElementById('phoneNo').value;
+        if(phone.startsWith('080')||phone.startsWith('070')||phone.startsWith('090')||phone.startsWith('071')||phone.startsWith('081')||phone.startsWith('091')||phone.startsWith('+234')){
+         console.log("Validated");
+        }
+        else {
+         console.log("Wrong input");
+        }
+      }
+      
         let email =document.getElementById('E-mail').value;
         let gender =document.getElementById('gender').value;
         let address =document.getElementById('address').value;
