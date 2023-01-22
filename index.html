@@ -17,16 +17,19 @@
         <div class="my-2">
             <label for="name">Name:</label>
               <input type="text"  id="name" class="form-control w-100" placeholder="Name" name="name" oninput="validName()" required>
-          </div>
+            <p id="name-status"></p>
+            </div>
 
         <div class="my-2">
             <label for="phoneNo">Phone Number</label>
               <input type="text"  id="phoneNo" class="form-control w-100" placeholder="Phone Number" name="phoneNo" oninput="validPhone()" required>
-        </div>
+              <p id="phone-status"></p>
+         </div>
 
         <div class="my-2">
             <label for="E-mail">E-mail:</label>
-              <input type="text"  id="E-mail" class="form-control w-100" placeholder="E-mail" name="E-mail" required>
+              <input type="text"  id="E-mail" class="form-control w-100" placeholder="E-mail" name="E-mail" oninput="validEmail()" required>
+              <p id="email-status"></p>
         </div>
 
         <div class="my-2">
@@ -41,19 +44,20 @@
 
         <div class="mb-2 mt-2">
           <label for="address" class="form-label">Address</label>
-          <input type="text" class="form-control w-100" id="address" placeholder="Address" name="address" required>
+          <input type="text" class="form-control w-100" id="address" placeholder="Address" name="address" oninput="validAddress()" required>
+          <p id="address-status"></p>
         </div>
 
         <div class="mb-3">
-          <label for="pwd" class="form-label">Password:</label>
+          <label for="password" class="form-label">Password:</label>
           <input type="password" class="form-control w-100" id="password" placeholder="Enter password" name="password" required>
+          <p id="password-status"></p>
         </div>
 
         <div class="mb-3">
-            <label for="pwd" class="form-label">Confirm Password:</label>
+            <label for="ConfirmPassword" class="form-label">Confirm Password:</label>
             <input type="password" class="form-control w-100" id="ConfirmPassword" placeholder="Confirm password" name="Confirmpassword" required>
-            <!-- <div class="valid-feedback">Valid.</div> -->
-            <!-- <div class="invalid-feedback">Please fill out this field.</div> -->
+            <p id="ConfirmPassword-status"></p>
           </div>
         <div class="form-check mb-3">
           <input class="form-check-input " type="checkbox" id="myCheck" name="remember" required>
@@ -68,43 +72,87 @@
      <!-- <script src="bootstrap/bootstrap.bundle.min.js"></script> -->
      <script>
         function validName(){
-          let nums=['0','1','2','3','4','5','6','7','8','9','*','_','+','=','-','!','£','$','%','^','&']
+          // let nums=['0','1','2','3','4','5','6','7','8','9','*','_','+','=','-','!','£','$','%','^','&']
               let name=document.getElementById('name').value;
              if(name.lenght!=0) {
                  console.log("Validated")
-              if((nums.includes(name)==true)){
+              if(name.isInt==true||name.includes('¬')==true||name.includes('!')==true||name.includes('£')==true||
+              name.includes('$')==true||name.includes('%')==true||name.includes('^')==true||name.includes('&')==true
+              ||name.includes('*')==true||name.includes('(')==true
+              ||name.includes(')')==true||name.includes('_')==true||name.includes('-')==true||name.includes('+')==true||
+              name.includes('=')==true||name.includes('/')==true||name.includes('>')==true||name.includes('<')==true){
                 console.log("Invalid input")
+                document.getElementById('name-status').innerHTML="Invalid";
                 // document.getElementById('valid-feedback').innerText=" ";
               }
               
               }
-              else if((name.lenght!=0)&&(nums.includes(name)==false)){
+              else if(name.isInt==false){
                 console.log("Validated!");
+                document.getElementById('name-status').innerHTML="Valid"
               } 
             //  else if(name.lenght==0){
           
             //  }
              else{
-              document.getElementById('name').style.accentColor;
-                console.log("Empty! Not allowed")
+                console.log("Valid")
+                document.getElementById('name-status').innerHTML="Valid"
              }
 
         }
       function validPhone(){
         let phone =document.getElementById('phoneNo').value;
-        if(phone.startsWith('080')||phone.startsWith('070')||phone.startsWith('090')||phone.startsWith('071')||phone.startsWith('081')||phone.startsWith('091')||phone.startsWith('+234')){
+        if(phone.startsWith('080')||phone.startsWith('070')||phone.startsWith('090')||phone.startsWith('071')||phone.startsWith('081')||phone.startsWith('091')||phone.startsWith('+234')&& phone.isInt==true){
          console.log("Validated");
+         document.getElementById('phone-status').innerHTML="Valid";
         }
         else {
+          document.getElementById('phone-status').innerHTML="Invalid";
          console.log("Wrong input");
         }
       }
-      
+       function validEmail(){
         let email =document.getElementById('E-mail').value;
-        let gender =document.getElementById('gender').value;
+        if(email.includes('@')==true){
+          document.getElementById('email-status').innerHTML="Valid"
+        }
+        else{
+          document.getElementById('email-status').innerHTML="Invalid"
+        }
+       }
+       
+       function validAddress(){
         let address =document.getElementById('address').value;
+        if(address.isInt==true){
+          document.getElementById('address-status').innerHTML="Invalid";
+        }
+        else{
+          document.getElementById('address-status').innerHTML="Valid";
+        }
+       }
+        let gender =document.getElementById('gender').value;
+       
+      function validPassword(){
+        let password =document.getElementById('password').value;
+        if(password.lenght==0){
+          document.getElementById('password-staus').innerHTML="Invalid"
+        }
+        else{
+          document.getElementById('password-staus').innerHTML="Valid"
+        }
+      }
+      function confirmPassword(){
         let password =document.getElementById('password').value;
         let ConfirmPassword =document.getElementById('ConfirmPassword').value;
+        if(password===ConfirmPassword){
+          document.getElementById('ConfirmPassword-status').innerHTML="Valid";
+        }
+        else{
+          document.getElementById('ConfirmPassword-status').innerHTML="Invalid";
+        }
+
+      }
+       
 
 
      </script>

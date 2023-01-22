@@ -6,6 +6,7 @@
 #form{
     display: flex;
     width: 100%;
+    background-color: cornflowerblue;
 }
 #form-validation{
     justify-content: center;
