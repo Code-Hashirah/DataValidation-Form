@@ -50,13 +50,13 @@
 
         <div class="mb-3">
           <label for="password" class="form-label">Password:</label>
-          <input type="password" class="form-control w-100" id="password" placeholder="Enter password" name="password" required>
+          <input type="password" class="form-control w-100" id="password" placeholder="Enter password" name="password" oninput="validPassword()" required>
           <p id="password-status"></p>
         </div>
 
         <div class="mb-3">
             <label for="ConfirmPassword" class="form-label">Confirm Password:</label>
-            <input type="password" class="form-control w-100" id="ConfirmPassword" placeholder="Confirm password" name="Confirmpassword" required>
+            <input type="password" class="form-control w-100" id="ConfirmPassword" placeholder="Confirm password" name="Confirmpassword" oninput="confirmPassword()" required>
             <p id="ConfirmPassword-status"></p>
           </div>
         <div class="form-check mb-3">
@@ -73,33 +73,36 @@
      <script>
         function validName(){
           // let nums=['0','1','2','3','4','5','6','7','8','9','*','_','+','=','-','!','£','$','%','^','&']
-              let name=document.getElementById('name').value;
-             if(name.lenght!=0) {
-                 console.log("Validated")
-              if(name.isInt==true||name.includes('¬')==true||name.includes('!')==true||name.includes('£')==true||
-              name.includes('$')==true||name.includes('%')==true||name.includes('^')==true||name.includes('&')==true
-              ||name.includes('*')==true||name.includes('(')==true
-              ||name.includes(')')==true||name.includes('_')==true||name.includes('-')==true||name.includes('+')==true||
-              name.includes('=')==true||name.includes('/')==true||name.includes('>')==true||name.includes('<')==true){
+           //  if(name.lenght!=0) {    
+          let name=document.getElementById('name').value;
+           
+              if(name.includes('*')==true||name.includes('(')==true||name.includes('7') ==true
+              ||name.includes('_')==true||name.includes('=')==true||name.includes('/')==true||name.includes('>')==true
+              ||name.includes('<')==true||name.includes('¬')==true || name.includes('!')==true || name.includes('£')==true 
+              || name.includes('$')==true ||name.includes('1')==true||name.includes('2')==true||name.includes('3')==true||name.includes('4')==true
+              || name.includes('%')==true || name.includes('^')==true || name.includes('&')==true
+              ||name.includes('-')==true||name.includes('+')==true){
                 console.log("Invalid input")
                 document.getElementById('name-status').innerHTML="Invalid";
                 // document.getElementById('valid-feedback').innerText=" ";
               }
               
-              }
-              else if(name.isInt==false){
+              // }
+              else {
                 console.log("Validated!");
-                document.getElementById('name-status').innerHTML="Valid"
+                document.getElementById('name-status').innerHTML="Valid8"
               } 
-            //  else if(name.lenght==0){
+            //  else if(name.lenght==0){  ||name.includes('*')==true||name.includes('(')==true
+              // ||
+              // 
           
             //  }
-             else{
-                console.log("Valid")
-                document.getElementById('name-status').innerHTML="Valid"
-             }
-
-        }
+            //  else{
+            //     // console.log("Valid")
+            //     document.getElementById('name-status').innerHTML="Valid9"
+            //  }
+       }
+        // }
       function validPhone(){
         let phone =document.getElementById('phoneNo').value;
         if(phone.startsWith('080')||phone.startsWith('070')||phone.startsWith('090')||phone.startsWith('071')||phone.startsWith('081')||phone.startsWith('091')||phone.startsWith('+234')&& phone.isInt==true){
@@ -138,7 +141,7 @@
           document.getElementById('password-staus').innerHTML="Invalid"
         }
         else{
-          document.getElementById('password-staus').innerHTML="Valid"
+          document.getElementById('password-status').innerHTML="Valid"
         }
       }
       function confirmPassword(){
@@ -148,7 +151,7 @@
           document.getElementById('ConfirmPassword-status').innerHTML="Valid";
         }
         else{
-          document.getElementById('ConfirmPassword-status').innerHTML="Invalid";
+          document.getElementById('ConfirmPassword-status').innerHTML="Not match";
         }
 
       }
