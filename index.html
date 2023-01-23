@@ -106,7 +106,9 @@
         // }
       function validPhone(){
         let phone =document.getElementById('phoneNo').value;
-        if(phone.startsWith('080')||phone.startsWith('070')||phone.startsWith('090')||phone.startsWith('071')||phone.startsWith('081')||phone.startsWith('091')||phone.startsWith('+234')&& phone.isInt==true){
+        if(phone.startsWith('080')||phone.startsWith('070')||phone.startsWith('090')||phone.startsWith('071')
+        ||phone.startsWith('081')||phone.startsWith('091')
+        ||phone.startsWith('+234')&& Number.isInt(phone)==true&&phone.lenght==11){
          console.log("Validated");
          document.getElementById('phone-status').innerHTML="Valid";
         }
