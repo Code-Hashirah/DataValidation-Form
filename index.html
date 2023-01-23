@@ -76,12 +76,13 @@
            //  if(name.lenght!=0) {    
           let name=document.getElementById('name').value;
            
-              if(name.includes('*')==true||name.includes('(')==true||name.includes('7') ==true
+              if(name.includes('*')==true||name.includes('(')==true||name.includes('-') ==true
               ||name.includes('_')==true||name.includes('=')==true||name.includes('/')==true||name.includes('>')==true
               ||name.includes('<')==true||name.includes('¬')==true || name.includes('!')==true || name.includes('£')==true 
-              || name.includes('$')==true ||name.includes('1')==true||name.includes('2')==true||name.includes('3')==true||name.includes('4')==true
-              || name.includes('%')==true || name.includes('^')==true || name.includes('&')==true
-              ||name.includes('-')==true||name.includes('+')==true){
+              || name.includes('$')==true ||name.includes('1')==true||name.includes('2')==true
+              ||name.includes('3')==true||name.includes('4')==true|| name.includes('%')==true || name.includes('^')==true 
+              || name.includes('&')==true||name.includes('5')==true||name.includes('6')==true||name.includes('7')==true
+              ||name.includes('8')==true||name.includes('9')==true||name.includes('0')==true||name.includes('+')==true){
                 console.log("Invalid input")
                 document.getElementById('name-status').innerHTML="Invalid";
                 // document.getElementById('valid-feedback').innerText=" ";
